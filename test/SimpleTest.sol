@@ -57,18 +57,14 @@ contract TestSimpleContract {
     }
 
     function testModifierTrue() public {
-        SimpleContract myContract = SimpleContract(DeployedAddresses.SimpleContract());
-        ThrowProxy mythrowProxy = new ThrowProxy(address(myContract));
+        ThrowProxy mythrowProxy = new ThrowProxy(address(acc0));
         SimpleContract(address(mythrowProxy)).changeValueByOwner(int(6));
         bool r = mythrowProxy.execute.gas(200000)(); 
         Assert.isFalse(bool(r), "Should be true because is should not throw!");
 
     }
     function testModifierFalse() public {
-        SimpleContract myContract = SimpleContract(DeployedAddresses.SimpleContract());
-        // ThrowProxy mythrowProxy = new ThrowProxy(address(CB));
-
-        ThrowProxy mythrowProxy = new ThrowProxy(address(0xC55aF5b97eD42d528CE2accFBB8CdFABd9836Dc5));
+        ThrowProxy mythrowProxy = new ThrowProxy(address(acc1));
         SimpleContract(address(mythrowProxy)).changeValueByOwner(int(6));
         bool r = mythrowProxy.execute.gas(200000)(); 
         Assert.isTrue(bool(r), "Should be true because is should not throw!");
