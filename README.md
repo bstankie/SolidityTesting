@@ -40,3 +40,50 @@ networks: {
      },
 }
 ```
+
+We need to setup the migration file to generate the simpleContract.sol. Create a file called ```./migrations/2_initial_migrations.js```. You can copy the ```./migrations/1_initial_migrations.js``` file and modify. You need to change the *const* and put the path to the ```.sol``` file along with specifying it in the ```deployer.deploy(...)``` command.
+
+```
+Create the migration file:
+
+```
+const SimpleContract = artifacts.require("./SimpleContract.sol");
+
+module.exports = function(deployer) {
+  deployer.deploy(SimpleContract);
+};
+
+```
+
+Start the truffle development environment 
+```bash
+> truffle develop
+```
+
+Migrate the contracts:
+
+```bash
+truffle(develop)> migrate
+```
+
+Load your instance so you can interact with it.
+```bash
+truffle(develop)> SimpleContract.deployed().then(function(instance) {app = instance;})
+```
+
+The contract is deployed using the first (or zeroth) account. Here we can change the value and specify using the first address.
+This should execute.
+
+```bash
+app.changeValueByOwner(6,{from: accounts[0]})
+```
+The contract is deployed using the first (or zeroth) account. Here we specify that the sender is the second account which is not the owner (or deployer). Because of our *modifier* that we put on *changeValueByOwner* this should now fail.
+
+```bash
+app.changeValueByOwner(6,{from: accounts[1]})
+```
+
+
+## References
+
+[Using Truffle! Blockgeeks Live Coding Webinar](https://youtu.be/nRySHw123x8)
