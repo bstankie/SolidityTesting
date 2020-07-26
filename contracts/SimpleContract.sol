@@ -16,4 +16,10 @@ contract SimpleContract {
     function changeValueByOwner(int _inputVal) public onlyOwner {
         currVal = _inputVal;
     }
+    function getValue() public view returns(int){
+        return currVal;
+    }
+    function changeOwner(address _receiver) public onlyOwner {
+        owner = _receiver;
+    }
 }
