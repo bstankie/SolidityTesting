@@ -5,6 +5,7 @@ contract SimpleContract {
     address owner;
     constructor() public {
         owner = msg.sender; // Set the owner to the person that created the contract.
+        currVal=0;
     }
     // onlyOwner is a modifier that will be used to prevent non-owners from doing things.
     modifier onlyOwner{

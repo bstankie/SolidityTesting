@@ -74,6 +74,33 @@ contract TestSimpleContract {
         Assert.isTrue(bool(r), "Should be true because it should throw an error: acc1 != owner!");
 
     }
+    // test_changeValueByOwner
+    // This function will test that the value is actually changed when the changeValueByOwner
+    // is called.
+    function test_changeValueByOwner() public {
+        SimpleContract myContract = new SimpleContract();
+        myContract.changeValueByOwner(int(7));
+        Assert.equal(myContract.getValue(),int(7),"Value was not changed to 7.");
+    }
 
+    // test_changeValueByOwner_proxy
+    // Test to ensure that the changeValueByOwner doesn't throw an error when a proxy is used with acc0 (the deploy account).
+    function test_changeValueByOwner_proxy() public {
+        ThrowProxy mythrowProxy = new ThrowProxy(acc0);
+        SimpleContract(address(mythrowProxy)).changeValueByOwner(int(8));
+        bool r = mythrowProxy.execute.gas(200000)();
+        Assert.isFalse(bool(r), "Should be true because it should throw an error: acc1 != owner!");
+
+    }
+
+    // test_changeValueByNonowner_proxy
+    // Test that the changeValueByOwner returns a 'throw' when trying to change the value using the non-owner account (acc1.)
+    function test_changeValueByNonowner_proxy() public {
+        ThrowProxy mythrowProxy = new ThrowProxy(acc1);
+        SimpleContract(address(mythrowProxy)).changeValueByOwner(int(8));
+        bool r = mythrowProxy.execute.gas(200000)();
+        Assert.isTrue(bool(r), "Should be true because it should throw an error: acc1 != owner!");
+
+    }
 
 }
