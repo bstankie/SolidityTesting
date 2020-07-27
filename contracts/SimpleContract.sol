@@ -10,7 +10,7 @@ contract SimpleContract {
     // onlyOwner is a modifier that will be used to prevent non-owners from doing things.
     modifier onlyOwner{
         require(
-          msg.sender == address(owner),
+          address(msg.sender) == address(owner),
           'Only the owner can do this function.');
         _;
     }
@@ -20,6 +20,10 @@ contract SimpleContract {
     function getValue() public view returns(int){
         return currVal;
     }
+    function getOwner() public view returns(address){
+        return owner;
+    }
+
     function changeOwner(address _receiver) public onlyOwner {
         owner = _receiver;
     }
