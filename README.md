@@ -43,6 +43,19 @@ networks: {
 
 We need to setup the migration file to generate the simpleContract.sol. Create a file called ```./migrations/2_initial_migrations.js```. You can copy the ```./migrations/1_initial_migrations.js``` file and modify. You need to change the *const* and put the path to the ```.sol``` file along with specifying it in the ```deployer.deploy(...)``` command.
 
+## Testing code.
+
+We are trying to build the unit tests so that we can test changing the owner and ensure that the old owner cannot still make changes to the contract.
+
+We will use the mnemonic so that we know the addresses. Not sure if this is necessary but it is one less thing to worry about during the debugging.
+
+```bash
+$ ganache-cli -m "easily trophy acoustic same lunch vibrant reflect clerk bacon donor retire frown"
+```
+
+
+
+## Erata
 
 Create the migration file:
 
