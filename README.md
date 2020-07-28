@@ -43,10 +43,10 @@ networks: {
 
 We need to setup the migration file to generate the simpleContract.sol. Create a file called ```./migrations/2_initial_migrations.js```. You can copy the ```./migrations/1_initial_migrations.js``` file and modify. You need to change the *const* and put the path to the ```.sol``` file along with specifying it in the ```deployer.deploy(...)``` command.
 
-```
+
 Create the migration file:
 
-```
+```python
 const SimpleContract = artifacts.require("./SimpleContract.sol");
 
 module.exports = function(deployer) {
