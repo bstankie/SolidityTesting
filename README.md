@@ -25,7 +25,7 @@ At localhost: **127.0.0.1**
 
 Modify truffle-config.js in your repo for the address and the port.
 
-```yaml
+```yaml  
 networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
