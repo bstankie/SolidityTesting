@@ -23,9 +23,12 @@ contract ThrowProxy {
 } 
 contract TestSimpleContract {
     SimpleContract newContract = new SimpleContract();
-    address acc0 = address(newContract.getOwner());   //Variables used to emulate different accounts
-    address acc1 = address(0xC55aF5b97eD42d528CE2accFBB8CdFABd9836Dc5);   //Variables used to emulate different accounts
-    address acc2 = address(0xD6E7D54d4Ab848D4c2467E9D52E0489d03A4c2e5);   //Variables used to emulate different accounts
+    address origOwnerAddress = address(newContract.getOwner());   //Variables used to emulate different accounts
+    address newContractAddress = address(newContract.address())
+    address acc0 = address(0x87379501c993c876A57cBE91438Ef59CcdDc3cB0);   //Variables used to emulate different accounts
+    address acc1 = address(0x4B710574671B3727FD2c5180e4626eC507d67E1D);   //Variables used to emulate different accounts
+    address acc2 = address(0x3DB3017E532f7b87b7c6611BE853B340CbbcFd1D);   //Variables used to emulate different accounts
+    address acc3 = address(0x6Cf48E0f71Fd1e071B66397c8ca755a61C761c54);   //Variables used to emulate different accounts
     // beforeAll is run before all of the other functions. We will use this to deploy the
     // contract and to set variable addresses.
     function testEqualAddresses_acc0_DeployedAddresses() public {

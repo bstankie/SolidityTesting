@@ -51,8 +51,21 @@ We will use the mnemonic so that we know the addresses. Not sure if this is nece
 
 ```bash
 $ ganache-cli -m "easily trophy acoustic same lunch vibrant reflect clerk bacon donor retire frown"
+
+# First 5 addresses.
+# (0) 0x87379501c993c876A57cBE91438Ef59CcdDc3cB0 (100 ETH)
+# (1) 0x4B710574671B3727FD2c5180e4626eC507d67E1D (100 ETH)
+# (2) 0x3DB3017E532f7b87b7c6611BE853B340CbbcFd1D (100 ETH)
+# (3) 0x6Cf48E0f71Fd1e071B66397c8ca755a61C761c54 (100 ETH)
+# (4) 0xBbF6971b8cD62822C39eF834e8DCcd5F37315b97 (100 ETH)
+# (5) 0x736CcD6c9061Dda3d6753eF73cE3F82566a1e7a3 (100 ETH)
 ```
 
+Run the test from the command line.
+
+``` bash
+$ truffle test ./test/Test_SuperSimple.sol
+```
 
 
 ## Erata
@@ -100,3 +113,5 @@ app.changeValueByOwner(6,{from: accounts[1]})
 ## References
 
 [Using Truffle! Blockgeeks Live Coding Webinar](https://youtu.be/nRySHw123x8)
+
+[Deployed Addresses](http://www.talkcrypto.org/blog/2019/01/11/where-is-deployedaddresses-sol-when-testing-in-truffle/)
