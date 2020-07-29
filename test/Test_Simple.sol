@@ -63,8 +63,12 @@ contract TestSimpleContract {
     function test_accountChangedBy_Proxy() public {
         Assert.equal(address(acc1),address(newContract.getOwner()),'Proxy Fail: acc1 and newContract.getOwner() not the same');
     }
+
+    // Test that the account will change by the newContract.
+    // Passes
     function test_accountChangedBy_newContract() public {
         newContract.changeOwner(address(acc1));
         Assert.equal(address(acc1),address(newContract.getOwner()),'newContract Fail:acc1 and newContract.getOwner() not the same');
     }
+    // How do I change the contract to test if the modifier is actually working?
 }
